@@ -1,4 +1,3 @@
-// Sample data for seeding the database
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
