@@ -1,0 +1,26 @@
+name: confidence-builder-app
+region: us-east-1
+services:
+  - name: confidence-builder-api
+    type: web
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+    autoDeploy: true
+    healthCheckPath: /api/health
+    minInstances: 1
+    maxInstances: 3
+
+databases:
+  - name: confidence-builder-db
+    type: mongodb
+    ipAllowList: []
